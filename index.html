@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥村大三 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>奥村大三 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社NGA</a>
+  <a href="#k2">2. ユームテクノロジージャパン株式会社</a>
+  <a href="#k3">3. 楽天グループ株式会社</a>
+  <a href="#k4">4. Terra Drone株式会社（テラドローン）</a>
+  <a href="#k5">5. Wovn Technologies株式会社（ウォーブン　テクノロジーズ）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">エンタープライズ領域アカウント営業</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社NGA</div>
+  <div class="co-url"><a href="https://nga-x.com/" target="_blank">https://nga-x.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-6490 東京都港区虎ノ門1-17-1 虎ノ門ヒルズビジネスタワー15階</td></tr><tr><th>上野オフィス</th><td>〒110-0015 東京都台東区東上野1-12-2 THE GATE UENO 9F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>推薦者が初期から出資しているHRTechのスタートアップ</li><li>シリーズAでシンガポールの政府系ファンドから15億円程度の調達を予定、マーケティング強化予定</li><li>個人ユーザー1万人獲得スピードがビズリーチやWantedlyより最速</li><li>Indeedを超える予感があると推薦者が高く評価</li><li>代表は慶應大学→新卒リクルート→シリアルアントレプレナーの中国人起業家</li><li>ビジネスモデルが秀逸で、各種メディアにも多数取り上げられている</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">NGAは「次世代アプリで、社会課題解決に挑む」をミッションに2021年5月に創業。第3世代AI採用アプリ『HelloBoss』とペット総合SNSアプリ『Pet』を運営するHRTechスタートアップです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>株式会社NGAは、次世代アプリ開発・運営の会社です。常識にとらわれないビジネスモデルと先進技術を取り入れ、人々の生活をより便利に、より豊かにするサービスを提供することで、日本社会におけるリソースの非効率解消と社会課題の解決に向けて取り組んでいます。</p><p>「第3世代モバイルAIプラットフォーム」を謳う『HelloBoss』は、人材紹介会社を介さず、AIを使って人材と企業のベストマッチを実現するサービスです。マッチングしたら応募者と企業はチャットで連絡。チャットだから仕事中はもちろん、移動中やスキマ時間でも対応可能です。成果報酬はなしで、会社単位ではなく求人単位で支払い。契約は1ヶ月から可能で、1on1チャットは一人500円から可能。使う分だけ払う方式で、中小企業に優しい料金体系となっています。</p><p><strong>『HelloBoss』の実績：</strong></p><ul><li>日本初、第3世代AI採用アプリ</li><li>ユーザーは完全無料、企業は初期費用・成果報酬一切なしで1求人／月額5,000円～とリーズナブル</li><li>リリース一年で導入企業1,000社超・登録ユーザー数10万人突破！</li><li>ユーザー属性は35歳以下70％、全職種・全雇用形態を網羅</li><li>現状は特にサービス業（接客販売）や営業、ITエンジニアのユーザーが多い</li><li>導入企業はNTT・大東建託・ADK等のエンタープライズや、DIOR・マリオット・IHGなどのグローバル企業、日本マクドナルド・ローソン・串カツ田中・星野リゾートなど著名な流通小売サービス業界も幅広く利用</li><li>日本経済新聞、グッド！モーニング(テレビ朝日)などによる報道</li></ul><p><strong>CEO 王 沁 氏（Alex Wang / オウ シン）：</strong>学生時代から3回起業。2010年に留学で来日し、慶應義塾大学商学部に入学。在学中にコンテンツ商社「JCCD.com」、AI商社「AiBank.jp」を起業。大学卒業後、リクルートHDにてプロダクト統括本部・新規事業統括に5年間在籍。2021年、書籍『中国オンラインビジネスモデル図鑑』の出版をきっかけに、2021年5月にNGAを創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 『HelloBoss』エンタープライズ領域アカウント営業</div>
+          <div class="job-preview">AI採用アプリ『HelloBoss』のエンタープライズ向け新規開拓営業。急成長スタートアップで営業組織の中核を担うポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong><br>弊社はPre-Aラウンドで6億円の資金調達を完了し、事業の急成長を迎えています。さらなる成長に向けて、サービス拡充とマーケットシェアの拡大に向けて、一緒に成長できる新メンバーを募集します。</p><p><strong>【業務内容】</strong><br>入社後はAI採用アプリ『HelloBoss』のエンタープライズ向け新規開拓を担っていただきます。ご本人の希望、能力、経験に応じて、下記業務をお任せします。</p><p><strong>■エンタープライズアカウント営業</strong></p><ul><li>新規顧客へのアプローチ、サービスデモや提案</li><li>重要顧客へのフォローアップ、課題分析とソリューション提案</li><li>開発・運営チームと連携をとり、顧客のニーズに応じた機能改善の社内提案・開発サポートなど</li><li>求人広告指定代理店との連携による案件相談対応や提案同席</li></ul><p>※直販・代理店経由かかわらず、アカウント営業として担当クライアントの採用成功と売上最大化に責任を持っていただきます。</p><p><strong>＜営業組織＞</strong>計2名＋1名入社予定：リーダー1名、メンバー1名<br>※早い段階で20名～規模のチームへと拡大予定のため、経験・実績・能力によりマネジメントもお任せする可能性がございます。</p><p><strong>【ポジションの魅力】</strong></p><ul><li>ただの営業ではなく、急成長スタートアップならではの新規事業開発にまつわる幅広い業務が経験でき、あなたの市場価値も一気に高まります。</li><li>これから組織が拡大していくため、ポストもどんどん生まれていく予定です。</li></ul><p><strong>【応募資格】</strong></p><p><strong>▼必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 法人営業経験2年以上</li><li><span class='tag tag-must'>MUST</span> 圧倒的な成果を出した経験</li><li><span class='tag tag-must'>MUST</span> HR、SaaS、広告業界などにおけるエンタープライズ営業経験</li><li><span class='tag tag-must'>MUST</span> 優れたコミュニケーション能力とプレゼンテーション能力を持ち、聞き手の視点から分かりやすく説明・提案できる</li><li><span class='tag tag-must'>MUST</span> 共感性を持ち、顧客の悩みと希望をしっかりヒアリングできる</li><li><span class='tag tag-must'>MUST</span> 新しいアプリ、サービスに対して広く関心を持ち、自ら新しい知識を勉強できる</li><li><span class='tag tag-must'>MUST</span> 主体性と目標を持ってスピーディに行動できる</li></ul><p><strong>▼歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> 商材問わず法人営業、ルートセールス等営業のご経験を持つ（インターン経験も含め）</li><li><span class='tag tag-want'>WANT</span> スマホアプリ、求人サービスなどに関連した営業経験を持つ</li><li><span class='tag tag-want'>WANT</span> 中国語力・英語力</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">✅ 副業：条件によって可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://nga-x.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1AFpTR0Hjc_obqQ8ucrmo4ZSi66XLRAcp/view?usp=sharing" target="_blank">📄 会社資料</a><a class="lbtn lbtn-out" href="https://helloboss.com/" target="_blank">🌐 HelloBoss公式サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">Account Executive（新規法人営業）</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ユームテクノロジージャパン株式会社</div>
+  <div class="co-url"><a href="https://umujapan.co.jp/" target="_blank">https://umujapan.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>東京オフィス</th><td>〒160-0022 東京都新宿区新宿4-1-6 JR新宿ミライナタワー18階</td></tr><tr><th>大阪オフィス</th><td>〒530-0002 大阪府大阪市北区曽根崎新地1-13-22 御堂筋フロンティア1階 WeWork内</td></tr><tr><th>上場区分</th><td>未上場（当面予定なし）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>弊社代表・森本が顧問／アドバイザーとして関与</li><li>社長リレーション有り</li><li>過去複数名入社実績アリ</li><li>元Googleトップマネージャーが創設</li><li>昨年度比2〜3倍のペースで業績伸長中、収益力抜群</li><li>他のスタートアップと比べてもかなり資金が潤沢</li><li>NTTや船井総研など大手出身者の方も多く活躍</li><li>成果を出した分は評価され年俸に反映、入社後収入を上げている方も多数</li><li>マーケティング・インサイドセールスからリードがガンガン入ってくる環境</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">AIをはじめとする最先端テクノロジーと学習の科学を融合させたオンライン学習プラットフォーム『UMU』を提供。グローバルで2億人以上に活用され、日本では28,000社が利用するプロダクトに成長しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ユームテクノロジージャパン株式会社は、人の可能性を最大化させる「学び」のリーディングカンパニーとして、最新のテクノロジーを駆使し、人や組織にイノベーションを起こすための学習プラットフォーム『UMU（ユーム）』を提供しています。</p><p>『UMU（ユーム）』は「教わる・練習する・学ぶ・応用する」というプロセスを科学的に実践できる学習プラットフォームで、特に注目すべきは、AIリテラシーとプロンプトリテラシーに関するコンテンツです。生成AIの時代において全従業員がAIを効果的に活用し、生産性を向上させることを目的としたAIリテラシーコースは、組織全体の戦略的競争力を強化することができると期待されています。</p><p><strong>実績と強み：</strong></p><ul><li>2014年にシリコンバレーで誕生、現在では世界203以上の国と地域で100万社以上、日本国内で2.8万社以上に導入</li><li>国内最大級のSaaSレビューサイト「ITreview」では5,000製品中1位を獲得、2年連続でTOP5にランクイン</li><li>パナソニック、日本航空（JAL）、ZOZO、損害保険ジャパンといった大手企業での導入実績が豊富</li><li>社員数約50名（2026年6月時点）の少数精鋭組織</li><li>富士通、Softbank、パーソル総研、NTTデータユニバーシティ、BCon、カクシン、LDcube、ピープルフォーカスコンサルティングなど有名企業が公式パートナーとして支持</li></ul><p><strong>拠点：</strong>東京・大阪、グローバル本社は米国ポートランド、開発拠点は中国の北京。</p><p><strong>代表取締役 松田しゅう平：</strong>2008年から株式会社IPイノベーションズにてATDJapan設立及びATD活動啓蒙のため事務局活動に従事。2018年2月にUMUテクノロジージャパンを設立。</p><p><strong>社風：</strong>エンゲージメントが高い組織で、メンバー発案による家族帯同OKのバーベキュー大会やワーケーションなどの実施があります。特に参加しなくても何も言われず、大人な関係でありながら気持ちの良いメンバーが集まっています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 Account Executive（新規法人営業）</div>
+          <div class="job-preview">AI×学習プラットフォーム『UMU』のエンタープライズ向け新規法人営業。AI人材育成プログラムの企画から推進までを主導するポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景・ミッション】</strong><br>現在、あらゆる企業において「AIをいかに実務に落とし込み、生産性を向上させるか」が経営の最重要課題となっています。しかし、多くの企業が最新テクノロジーの導入に留まり、現場の社員が「使いこなす」手前の組織浸透に苦戦しています。</p><p>本ポジションは、企業の経営課題、とりわけ「AI活用人材の育成」をテーマに、AIリテラシー教育×学習データ活用を組み合わせ、組織全体のパフォーマンス変革を支援する極めて重要な役割です。今回は、自らフロントランナーとしてAI人材育成プロジェクトの提案・推進を強力に牽引し、当社の次なる成長を担っていただくアカウントエグゼクティブを募集します。</p><p><strong>【仕事内容】</strong><br>単に既存の研修パッケージを提案する営業ではなく、顧客の経営課題から逆算して「どうすれば人が変わり、組織が動くか」というストーリーを描き、AI人材育成プログラムの企画からプロジェクト全体の推進までを主導していただきます。</p><ul><li><strong>経営・人材開発・DX部門へのソリューション提案：</strong>顧客の経営課題から逆算して「どうすれば人が変わり、組織が動くか」というストーリーを描き、AI人材育成プログラムの企画・提案を行います。</li><li><strong>AI活用の組織浸透施策の策定：</strong>「AIを業務でどう使うか」「AIリテラシーをどう全社に浸透させるか」の課題整理を行い、生成AI／プロンプト作成等の研修コース設計や販売企画を行います。</li><li><strong>データ活用とプロジェクト推進：</strong>カスタマーサクセスチームやマーケティングチームと連携し、学習成果データを活用した改善提案・継続支援を含むプロジェクトを推進します。</li><li><strong>市場への影響力拡大：</strong>セミナーの運営サポートや導入事例の発信などのブランディング活動を通じて、当社ブランド（UMU）の認知度向上に寄与します。</li></ul><p><strong>【ポジションの魅力】</strong></p><ul><li>単にツールを売るだけでなく、導入後のカスタマーサクセスによる伴走支援までを見据え、顧客の本質的な成果に繋がるロードマップを提案できます。</li><li>大手企業の役員・CXO層を巻き込み、AI×学習の科学を用いた大規模提案を行うため、圧倒的な専門性と市場価値が身につきます。</li><li>国内No.1評価（ITreview 1位）のプロダクトを武器に、「AI時代の新たな学習文化」を広げる中核メンバーとして活躍できます。</li></ul><p><strong>【応募資格】</strong></p><p><strong>◾️必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 法人向けSaaS/IT業界での営業・コンサルティング経験、もしくはトップセールスとして高い成果を出してきた実績（MVP、営業成績全社1位 等）</li></ul><p><strong>◾️歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> 人材開発・研修業界、コンサルティングファームにおける実務経験</li><li><span class='tag tag-want'>WANT</span> エンタープライズ企業（大手企業）向けの提案営業経験</li><li><span class='tag tag-want'>WANT</span> 製薬、保険、金融、製造、小売業界における、エンタープライズ（大手企業）向けの営業実績</li></ul><p><strong>【求める人物像】</strong></p><ul><li>単に研修パッケージを提案するのではなく、顧客の経営課題から逆算し、「どうすれば人が変わり、組織が動くか」という変革のストーリーを論理的に描ける方</li><li>AIという最新技術を、どうすれば現場の社員が「自分事」として捉え、行動変容に繋げられるか。テクノロジーと人の心理の双方に強い興味を持ち、その間を繋げる方</li><li>「実施して終わり」の研修ではなく、学習成果データを冷静に分析し、顧客の期待を超える次の一手を提案し続けることにやりがいを感じる方</li><li>正解のない「AI活用の組織浸透」という難題に対し、自ら情報を取りに行き、他部署を巻き込みながらプロジェクトを完遂させる自律的な行動力がある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://umujapan.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://youtu.be/Yxj3zU7t0qY" target="_blank">🎥 3分で分かるUMUの魅力</a><a class="lbtn lbtn-out" href="https://www.wantedly.com/companies/company_7729270/post_articles/1014902" target="_blank">📝 代表松田インタビュー記事</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">マーケティングディビジョン：新規事業企画・代理店営業</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">楽天グループ株式会社</div>
+  <div class="co-url"><a href="https://corp.rakuten.co.jp/" target="_blank">https://corp.rakuten.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒158-0094 東京都世田谷区玉川一丁目14番1号</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">国内最大級のインターネットショッピングモール「楽天市場」等を運営し、多岐にわたるサービスを自社で企画運営し成功に導く日本を代表するインターネット企業。世界一のインターネット・サービス企業に向けてチャレンジを続けています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>楽天グループ株式会社は、国内最大級のインターネットショッピングモール「楽天市場」等を運営し、多岐にわたるサービスを自社で企画運営し成功に導いております。世界一のインターネット・サービス企業に向けてチャレンジを続けてきた同社は、今やインターネット業界の雄として日本のメディア産業の将来をも牽引する存在となりました。</p><p>現在国際展開を急速に進めており、米国、アジア、ＥＵ圏の進出を加速しています。社内でも、急速にグローバル化が進んでおり、2012年から英語の全面導入を開始し、現在は、取締役会はもちろんのこと、各事業セクションごとの経営会議でも、資料・スピーチともに英語、毎週月曜朝8時から開かれる全社員を集めた「朝会」も英語で行われています。ここまで徹底している理由は、同社を本気で世界一のインターネット・サービス企業にする為、また同社が変われば他の会社にも影響を与え、日本の企業や一般家庭にも英語の必要性を訴求出来ると考えており、日本を代表する企業から世界を代表する企業へと変革を遂げようとしています。急速なグローバル化や幅広いサービスを運営している事もあり、他業種からの優秀な人材、モチベーションの高い人材が集い、強力な組織を築き上げています。</p><p><strong>▼主な事業</strong></p><ul><li>楽天市場事業：インターネットショッピングモール「楽天市場」の運営</li><li>ブックス事業：電子書籍の「kobo」、書籍販売サイト「楽天ブックス」などの運営</li><li>証券事業：インターネット証券取引サービス「楽天証券」の運営</li><li>クレジットカード事業：楽天カード</li><li>トラベル事業：インターネット総合旅行サイト「楽天トラベル」の運営</li><li>プロスポーツ事業：球団「東北楽天ゴールデンイーグルス」の運営　など</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティングディビジョン：新規事業企画・代理店営業（未経験可）</div>
+          <div class="job-preview">楽天モバイルのアライアンス推進グループにて、新規アライアンスの立ち上げ・スケール化・代理店経由獲得KPIの成長をリードするポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【業務内容】</strong><br>楽天モバイルのアライアンス推進グループにおいて、以下業務のグロースをリードする。</p><ul><li>新規アライアンスの立ち上げならびにスケールの再現性構築</li><li>代理店/パートナー経由の獲得KPIを継続成長させる</li><li>在留外国人領域を含む特定セグメントでの獲得モデルの確立</li><li>主要パートナー候補の選定と交渉、PoC設計、KPI整備、既存代理店施策の改善</li><li>人材の採用・育成・評価</li></ul><p><strong>【必須要件】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 大卒以上</li><li><span class='tag tag-must'>MUST</span> マネジメント経験2年以上</li><li><span class='tag tag-must'>MUST</span> 事業開発/アライアンス/コンサル/法人営業いずれかの実務経験</li><li><span class='tag tag-must'>MUST</span> パワーポイント、エクセルのスキル</li></ul><p><strong>【歓迎要件】</strong></p><ul><li><span class='tag tag-want'>WANT</span> プロジェクトマネジメント経験</li><li><span class='tag tag-want'>WANT</span> 多様なステークホルダーとの交渉、調整の経験</li><li><span class='tag tag-want'>WANT</span> KPI設計・数値管理（獲得、粗利、LTV、CAC等）の経験</li><li><span class='tag tag-want'>WANT</span> チームビルディングスキル</li><li><span class='tag tag-want'>WANT</span> 状況の変化に対するフレキシブルな対応力</li><li><span class='tag tag-want'>WANT</span> 日本語、英語両方でのビジネス経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>マーケティングや営業など今までの経験をフル活用し、社会にインパクトのあるチャレンジをしたい方</li><li>データに基づきロジカルに企画立案し、運用開始後はパッションをもって推進できる方</li><li>ニーズを先読みし、今はまだないサービスやプロダクト、施策を立案したい方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.rakuten.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">次世代経営幹部候補（初期配属_海外営業）</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">Terra Drone株式会社（テラドローン）</div>
+  <div class="co-url"><a href="https://www.terra-drone.net/company/" target="_blank">https://www.terra-drone.net/company/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒150-0002 東京都渋谷区渋谷二丁目１２番１９号 東建インターナショナルビル本館３階</td></tr><tr><th>新住所（2025年6月23日〜）</th><td>〒150-0036 東京都渋谷区南平台町2番17号 A-PLACE渋谷南平台 4階</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>東証グロース上場後の第二創業フェーズ。世界No.1企業が次の成長ステージへ</li><li>2024年11月に東証グロース市場へ上場。ドローンサービス企業世界ランキングで世界1位を獲得、サウジアラムコなど世界的プレイヤーからも出資を受ける日本発グローバル企業</li><li>M&A・海外展開・防衛事業への投資を加速しており、第二創業期のど真ん中を経験できる</li><li>「空の道をつくる」から「世界の安全を守る」へ。社会インフラと安全保障の両面から未来を支えるスケールの大きな事業に携われる</li><li>14カ国展開・平均年齢32歳──若くしてグローバル経営の真っ只中に立てる</li><li>連結従業員600名超、平均年齢約32歳という若い組織で、14カ国以上に事業を展開</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">テラモーターズ創業者・徳重徹氏が「ドローンで世界を変える」という強い信念のもと2016年に立ち上げた、日本発のグローバルドローンカンパニー。ドローンサービス企業世界ランキング2024年世界1位を獲得しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>Terra Drone株式会社は、テラモーターズ創業者・徳重徹氏が「ドローンで世界を変える」という強い信念のもと2016年に立ち上げた、日本発のグローバルドローンカンパニーです。測量・点検・農業・運航管理の分野で累計3,000件以上の実績を誇り、Drone Industry Insightsが発表する「ドローンサービス企業世界ランキング」では2019年以降連続でトップ2にランクイン。2024年はついに世界1位を獲得。さらに経済産業省主催「日本スタートアップ大賞2025」では「国土交通大臣賞」を受賞するなど、国内外での評価が急加速しています。</p><p>2024年11月29日に東証グロース市場への新規上場を果たし、引き続きグローバル展開・M&Aを加速。2026年1月期の売上高は前期比8%増の47億円と着実に成長を続けています。</p><p>2026年3月に防衛装備品市場への本格参入を発表し、迎撃ドローン「Terra A1」および固定翼型迎撃ドローン「Terra A2」による長距離自爆型攻撃用無人機「シャヘド」の迎撃成功、ウクライナ企業2社の連結子会社化、偵察用ドローン「Terra C1」の展開、欧州防衛事業拠点「Terra Defense Europe」の設立まで、怒涛の進展を見せています。また防衛装備庁より国産ドローン「モジュール型UAV（汎用型）」300式・約1.15億円を受注するなど、安全保障領域での実績も生まれ始めました。</p><p><strong>代表取締役社長 徳重 徹（とくしげ とおる）氏：</strong>1970年1月23日生まれ、山口県出身。九州大学工学部を卒業後、住友海上火災保険（現三井住友海上火災保険）に入社し、商品企画・経営企画を担当。2000年に米サンダーバード国際経営大学院でMBA（経営学修士）を取得後、米国でベンチャー企業の支援会社を立ち上げる。帰国後、2010年にEV事業を展開するテラモーターズを起業。アジアを中心に年間3万台のEVを販売する事業に育て上げる。その後2016年にドローン事業を展開するテラドローンを設立。2022年にはEV充電インフラ「テラチャージ」も立ち上げ、世界で勝てる事業の創出に挑んでいる。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 ＜Biz＞次世代経営幹部候補（初期配属_海外営業）※ポテンシャル</div>
+          <div class="job-preview">グローバルに展開する産業用ドローンソリューションの海外営業を初期配属として経験し、将来的に事業をリードする経営幹部候補を募集。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong><br>国内外に複数の事業展開する当社において、今後も連続的に新規事業の立ち上げが想定されておりますので、将来を見越して事業をリードする人材の確保を実施する事となりました。ドローン領域においてグローバルにチャレンジしたい意欲のある方を募集致します。</p><p><strong>【初期配属想定】</strong><br>当社が海外展開する点検用ドローンの海外営業ポジション<br>※独り立ちまでは当面月1程度で出張が発生する想定。</p><p><strong>【業務内容イメージ】</strong><br>産業⽤ドローンソリューション事業において、将来的に国内外に向けて下記のような業務を担当して頂く事を想定しています。</p><ul><li>事業戦略策定～組織マネジメント</li><li>新規市場開拓/顧客分析/マーケティング</li><li>国内外パートナー開拓/海外営業</li><li>新規事業立ち上げ</li><li>海外子会社経営</li></ul><p>※ご経験によりますが、最初の2〜3年は配属事業にてセールスや企画のような重要な課題解決業務に取り組んで頂き、実績やご意向に応じてリーダー育成を背景とした異動および配置転換を実施していきます。</p><p><strong>【応募資格】</strong></p><ul><li><span class='tag tag-must'>MUST</span> BtoB新規法人営業経験2年以上（直販or代理店問わず）</li><li><span class='tag tag-must'>MUST</span> 英語力（ビジネスレベル）</li><li><span class='tag tag-must'>MUST</span> 日本からグローバルで活躍する会社を生み出すという事に強い熱量を持てる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.terra-drone.net/company/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k5"><div class="card-inner">
+  <div class="badges"><span class="badge">アカウントエグゼクティブ・フィールドセールス</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">Wovn Technologies株式会社（ウォーブン　テクノロジーズ）</div>
+  <div class="co-url"><a href="https://wovn.io/ja/" target="_blank">https://wovn.io/ja/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒107-0062 東京都港区南青山2-26-1 D-LIFEPLACE南青山9階</td></tr><tr><th>上場区分</th><td>未上場（IPO準備中、最短2年後目安）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中（市況を見ながらタイミングは検討中、最短2年後目安）</li><li>toC／toB問わず、様々なWebサイトの裏側で多言語対応をおこなっているホリゾンタルSaaSスタートアップ</li><li>エンタープライズ企業を中心に様々なニーズがあり、内製でおこなわずとも複数言語に対応可能</li><li>クライアントが「多言語化を辞める」という選択をしない限り継続利用されるため、チャーンレートは1％未満</li><li>スタートアップでありながら大手メーカーなどエンタープライズ出身者が集まっており、大手→スタートアップへの転職も比較的成功しやすい企業</li><li>総調達額54億円、国内外の投資家から資金調達を実施</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「世界中の人が、すべてのデータに、母国語でアクセスできるようにする」をミッションに、Webサイト・アプリを最大43言語・76のロケールに多言語化する多言語化ソリューション『WOVN.io』および『WOVN.app』を提供するスタートアップです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>Wovn Technologies株式会社は、「世界中の人が、すべてのデータに、母国語でアクセスできるようにする」をミッションに、WebサイトやアプリをAIで多言語化するSaaSプロダクト『WOVN.io』および『WOVN.app』の開発・運営をしています。最大45言語・76のロケール（言語と地域の組み合わせ）に対応し、海外戦略・在留外国人対応を成功に導きます。</p><p>「WOVN.io」は大手企業をはじめ、昨今は外国人に対する情報発信を企業の社会的責任の一つとする考えが普及してきたこともあり、運行情報・災害情報を多言語化展開していきたい鉄道会社や、日本語が読めない外国人にも母国語で送金や振込など手続きを行えるようにしたい銀行など、社会インフラの企業等18,000サイト以上へ導入されています。</p><p><strong>主要な導入サイト（一部）：</strong></p><ul><li>NEC（日本電気株式会社）グループ社内ポータルサイト『ONE NEC.com』</li><li>三井住友カード株式会社　カード会員ページ『Vpass』</li><li>株式会社SmartHR　クラウド型人事労務システム『SmartHR』</li><li>ヤンマーホールディングス株式会社　グローバルサイト</li></ul><p>社員の4割が外国人メンバーで、およそ20の異なる国・地域から集まった約110名のメンバーで事業をしています。</p><p><strong>市場背景と需要：</strong></p><ul><li>インバウンド需要の増加：訪日観光客は2024年：3,600万人、2025年：4,000万人見込み、2030年には6,000万人が政府目標</li><li>外国籍人材・投資家の増加：外国人労働者や留学生の増加、海外投資家の影響力拡大</li><li>企業のグローバル展開が加速：英語だけでは対応困難、多言語対応が不可欠に</li></ul><p><strong>Wovnの解決策：</strong></p><ul><li>一元管理可能な翻訳基盤</li><li>日本語サイトから自動で多言語展開</li><li>SEO対応、デザイン反映、AI活用も可能</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 アカウントエグゼクティブ・フィールドセールス</div>
+          <div class="job-preview">多言語化SaaS『WOVN.io』のエンタープライズ向けフィールドセールス。グローバル戦略・多言語化に関する課題解決型の提案営業ポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【職務概要】</strong><br>フィールドセールス・アカウントエグゼクティブとして、エンタープライズ企業を中心に幅広く関わっていただきます。マーケティングおよびインサイドセールスチームが創出した商談を対応することもあれば、自ら案件創出を行うこともございます。</p><p><strong>【主な業務内容】</strong></p><ul><li>グローバル／多言語化戦略に関する課題解決型営業</li><li>担当顧客に向けたアップセル・クロスセル戦略の立案・実行</li><li>パートナー企業と連携した案件創出</li><li>アカウント攻略プランの策定・実行</li><li>プロダクトチーム、マーケティング、カスタマーサクセスと連携し、統合的なアカウント拡大戦略を推進</li><li>大型案件のエグゼキューションを主導し、社内外のステークホルダーと調整</li></ul><p><strong>【必須経験（以下いずれかの経験）】</strong></p><ul><li><span class='tag tag-must'>MUST</span> ITソリューションやWebサービスの法人営業の経験（SaaS / ERP / SIer / ハードウェア / グループウェア / ECベンダー 等）</li><li><span class='tag tag-must'>MUST</span> コンサルティングサービスにおけるクライアントワークの経験（目安3年以上）</li></ul><p><strong>【必須スキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 大手企業に対する法人営業・アカウント攻略に関するスキル（パイプライン管理、提案力、交渉力、顧客折衝力など）</li><li><span class='tag tag-must'>MUST</span> WebまたはITに関する基本的なリテラシー</li><li><span class='tag tag-must'>MUST</span> 顧客の経営課題・事業課題をヒアリングし、提案に結びつける思考力・提案力</li><li><span class='tag tag-must'>MUST</span> 顧客と信頼関係を築き、課題に対して伴走できる関係構築力・コミュニケーション力</li><li><span class='tag tag-must'>MUST</span> 周囲のメンバーとの信頼関係を構築し、周りを巻き込みながら課題解決を推進できるリーダーシップ・チームワーク力</li></ul><p><strong>【歓迎経験】</strong></p><ul><li><span class='tag tag-want'>WANT</span> 年間数千万円以上の規模のシステム開発プロジェクトを推進した経験</li><li><span class='tag tag-want'>WANT</span> 大手企業の顧客に対して、自らコネクションを開拓し、アカウント拡大を推進した経験</li><li><span class='tag tag-want'>WANT</span> システム開発やプログラミングに関する知識・経験</li><li><span class='tag tag-want'>WANT</span> 新規事業の立ち上げや組織づくりに関する経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>WOVNの理念に共感し、日本のグローバル戦略・外国人対応に関する課題解決を通じて社会貢献を実現したい</li><li>顧客と深い関係性を築き、同じ目線に立ち、課題解決に貢献できる瞬間にやりがいを感じる</li><li>粘り強さに自信があり、難易度の高い課題や要望でも突破口を見つけ出すのが好き</li><li>目的達成や組織成長のために柔軟に自身を変化させ、自律的に行動できる</li><li>何をすべきか考え、オーナーシップを持って物事を推進できる</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://wovn.io/ja/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://prtimes.jp/main/html/rd/p/000000143.000010446.html" target="_blank">📰 プレスリリース</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが奥村大三 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
